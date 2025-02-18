@@ -14,6 +14,11 @@ from schema_definitions import silver_schema
 
 # COMMAND ----------
 
+# extract required pipeline config parameters
+storageAccountUrl = spark.conf.get("storageAccountUrl")
+
+# COMMAND ----------
+
 @dlt.view(
   name=f"vw_bronze_layer",
   comment="View to read bronze data"
@@ -23,7 +28,7 @@ def bronze_data():
   # read raw data and adds metadata columns
   bronze_df = spark.readStream.format("cloudFiles")\
               .option("cloudFiles.format", "csv")\
-              .load(f"abfss://data@glbldvcpwdataasse002sta.dfs.core.windows.net/Colibri/data_group_*.csv", header=True, inferSchema=True, sep=",")\
+              .load(f"abfss://data@{storageAccountUrl}/Colibri/data_group_*.csv", header=True, inferSchema=True, sep=",")\
               .withColumn("load_timestamp", current_timestamp())\
               .withColumn("modified_timestamp", expr("_metadata.file_modification_time"))
 

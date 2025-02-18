@@ -20,4 +20,6 @@ I have built 2 separate DLT pipelines because a single DLT pipeline can only wri
 ![image](https://github.com/user-attachments/assets/9db4b911-b886-410f-a958-1b23bcb9fd3c)
 
 Unity Catalog:
-![image](https://github.com/user-attachments/assets/860f44e5-457c-499e-bf06-12716962eda1)
+
+![image](https://github.com/user-attachments/assets/70b197bb-471c-474d-a0b3-1c80799364d4)
+
